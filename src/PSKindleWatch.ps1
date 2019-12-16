@@ -100,7 +100,6 @@ function Add-KindleBook {
         # into an object (essentially dropping the array). This causes issues when we attempt to 
         # add other objects to the array
         if ($BookData -is [PSCustomObject]) {
-            Write-Host "Converting pile of shit to array"
             [array]$BookData = @($BookData)
         }
     }
@@ -127,6 +126,7 @@ function Add-KindleBook {
             Title         = $Result.title
             Authors       = [array]$Result.authorNameList
             ASIN          = $Result.ASIN
+            URL           = $BookURL
             ImageURL      = $Result.thumbnailImage.Replace("._SL75_", "")
             OriginalPrice = [decimal]$Result.buyingPrice.Replace("$", "")
             IsOnSale      = $false
@@ -203,7 +203,7 @@ function Update-KindleBookPrices {
 
         foreach ($Book in $BookData) {
 
-            Write-Progress -Activity "Checking book prices" -Status "Progress:" -PercentComplete ($i/$BookCount*100)
+            Write-Progress -Activity "Checking book prices" -Status "Progress:" -PercentComplete ($i / $BookCount * 100)
             $i++
             
             $Body = @{
@@ -256,12 +256,14 @@ function Update-KindleBookPrices {
             }
 
             if ($AlertScriptBlock -and $Message) {
-                Write-Host "Sending Alert!"
+                Write-Verbose "Triggering configured alert"
                 Invoke-Command -ScriptBlock $AlertScriptBlock -ArgumentList $Book, $Message
             }
 
             Start-Sleep -Seconds 1
         }
     }
+
     Export-KindleDataFile -BookData $BookData -DataFile $DataFile
+    Write-Progress -Completed -Activity "Checking book prices"
 }
