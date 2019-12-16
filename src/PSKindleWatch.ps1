@@ -143,8 +143,6 @@ function Add-KindleBook {
             $BookData += $obj            
             $Message = "Successfull added $($obj.Title)"
             
-            #Write-Verbose $BookData | Out-String
-
             Export-KindleDataFile -BookData $BookData -DataFile $DataFile -Message $Message
         }
         else {
