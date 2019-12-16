@@ -32,7 +32,7 @@ Function        Update-KindleBookPrices                            1.0        PS
 
 Please ensure the URL is of the Kindle edition of the book, others may not work due to differences in Amazon's APIs. 
 
-![Kindle edition](docs/kindle_edition.png)
+![Kindle edition](docs/kindle_edition.gif)
 
 The module stores book data in a JSON file, the `-DataFile` parameter specifies the path to this file. It is an optional parameter, by default it will be placed in the user's Documents folder and named KindleBooks.json. 
 
@@ -78,7 +78,7 @@ while($true) {
 
 ```diff
 PS C:\md\dev\PSKindleWatch> Update-KindleBookPrices
-Checking price of Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell, original price: 67.91
+Checking price of Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell
 +Found discount for Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell, new price is $41.98 (original: $67.91)
 ```
 
@@ -123,11 +123,12 @@ The `Update-KindleBookPrices` accepts a ScriptBlock parameter called `-AlertScri
         -BodyAsHtml `
         -SmtpServer "mail.mydomain.com"
 }
+
+Update-KindleBookPrices -AlertScriptBlock $SendEmail
 ```
 
-```
-PS C:\> Update-KindleBookPrices -AlertScriptBlock $SendEmail
-Checking price of Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell, original price: 61.99
+```diff
+Checking price of Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell
 Found discount for Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell, new price is $41.98 (original: $61.99)
 Sending email!
 ```

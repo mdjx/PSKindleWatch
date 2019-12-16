@@ -211,7 +211,7 @@ function Update-KindleBookPrices {
                 asin   = $Book.ASIN
             }
     
-            Write-Host "Checking price of $($Book.Title), original price: $($Book.OriginalPrice)"
+            Write-Host "Checking price of $($Book.Title)"
 
             $CurrentResult = Get-AmazonData -ASIN $Book.ASIN
             $CurrentPrice = [decimal]$CurrentResult.buyingPrice.Replace("$", "")
