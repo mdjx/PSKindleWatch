@@ -122,6 +122,8 @@ The `Update-KindleBookPrices` accepts a ScriptBlock parameter called `-AlertScri
         -Body $Body `
         -BodyAsHtml `
         -SmtpServer "mail.mydomain.com"
+
+    Write-Host "Sending email!"
 }
 
 Update-KindleBookPrices -AlertScriptBlock $SendEmail
