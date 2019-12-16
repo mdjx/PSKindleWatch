@@ -32,7 +32,7 @@ Function        Update-KindleBookPrices                            1.0        PS
 
 Please ensure the URL is of the Kindle edition of the book, others may not work due to differences in Amazon's APIs. 
 
-![Kindle edition](docs/kindle_edition.gif)
+![Kindle edition](/docs/kindle_edition.gif)
 
 The module stores book data in a JSON file, the `-DataFile` parameter specifies the path to this file. It is an optional parameter, by default it will be placed in the user's Documents folder and named KindleBooks.json. 
 
