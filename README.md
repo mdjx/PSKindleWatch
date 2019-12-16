@@ -77,7 +77,7 @@ while($true) {
 **Example Output**
 
 ```diff
-PS C:\md\dev\PSKindleWatch> Update-KindleBookPrices
+PS C:\> Update-KindleBookPrices
 Checking price of Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell
 +Found discount for Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell, new price is $41.98 (original: $67.91)
 ```
