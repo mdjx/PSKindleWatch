@@ -166,7 +166,7 @@ function Remove-KindleBook {
     $BookData = Import-KindleDataFile -DataFile $DataFile
     $BooksToBeRemoved = ($BookData | ? { $_.Title -match $BookTitle }).Title -join "`n -"
     if ($BooksToBeRemoved) {
-        Write-Host "Rmoving: `n -$BooksToBeRemoved"
+        Write-Host "Removing: `n -$BooksToBeRemoved"
         $BookData = $BookData | ? { $_.Title -notmatch $BookTitle }
 
 

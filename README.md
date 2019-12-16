@@ -52,7 +52,7 @@ The title lookup uses `-match`, a partial string match will suffice.
 
 ```powershell
 PS C:\> Remove-KindleBook -BookTitle narco
-Rmoving:
+Removing:
  -Narconomics: How To Run a Drug Cartel
  ```
 
