@@ -113,7 +113,7 @@ The `Update-KindleBookPrices` accepts a ScriptBlock parameter called `-AlertScri
         $Msg
     )
 
-    $Body = "<h1><a href=$($Book.URL)>Get it!</a><h1>"
+    $Body = "<h1><a href=$($Book.URL)>Get it!</a></h1>"
 
     Send-MailMessage `
         -From "alerts@mydomain.com" `
