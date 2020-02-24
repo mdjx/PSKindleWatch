@@ -134,3 +134,7 @@ Checking price of Windows PowerShell Cookbook: The Complete Guide to Scripting M
 Found discount for Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell, new price is $41.98 (original: $61.99)
 Sending email!
 ```
+
+#### Running `Update-KindleBookPrices` as a Windows Service
+
+I've written up a quick guide on how this can be made to run as a Window Service to avoid needing to manually restart the process after reboots. Check it out [here](https://xkln.net/blog/running-a-powershell-script-as-a-service/). 
