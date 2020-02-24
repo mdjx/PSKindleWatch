@@ -62,7 +62,7 @@ Removing:
 
 Checks the current price of all books in the data file and prints any price drop to the console. 
 
-It is recommended a wrapper be created to run this either on a loop in a PowerShell window, or as a scheduled task. 
+It is recommended a wrapper be created to run this in a loop in a PowerShell window, or as a scheduled task, or as a Windows Service. I've written up a quick guide on how it can be made to run as a service to avoid needing to manually restart the process after reboots. Check it out [here](https://xkln.net/blog/running-a-powershell-script-as-a-service/). 
 
 **Example**
 
@@ -86,7 +86,7 @@ Checking price of Windows PowerShell Cookbook: The Complete Guide to Scripting M
 
 As there are many options for alerting (email, SMS, push, API, ...) and each one with a myriad of providers this functionality has been left to the user to implement.
 
-The `Update-KindleBookPrices` accepts a ScriptBlock parameter called `-AlertScriptBlock`. The ScriptBlock is executed if there is a change in price, and gets passed the `$Book` object (see JSON representation below), and a descriptive message (see example above in green). 
+The `Update-KindleBookPrices` accepts a ScriptBlock parameter called `-AlertScriptBlock`. The ScriptBlock is executed if there is a change in price, and gets passed the `$Book` object (see JSON representation below) as the first parameter, and a descriptive message (a string, see example above in green) as the second parameter. 
 
 
 ```json
@@ -134,7 +134,3 @@ Checking price of Windows PowerShell Cookbook: The Complete Guide to Scripting M
 Found discount for Windows PowerShell Cookbook: The Complete Guide to Scripting Microsoft's Command Shell, new price is $41.98 (original: $61.99)
 Sending email!
 ```
-
-#### Running `Update-KindleBookPrices` as a Windows Service
-
-I've written up a quick guide on how this can be made to run as a Window Service to avoid needing to manually restart the process after reboots. Check it out [here](https://xkln.net/blog/running-a-powershell-script-as-a-service/). 
