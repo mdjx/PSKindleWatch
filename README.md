@@ -16,12 +16,13 @@ Copy the files from `src` to `C:\Program Files\WindowsPowerShell\Modules\PSKindl
 
 ## Running
 
-PSKindleWatch only has 3 cmdlets
+PSKindleWatch only has 4 cmdlets
 
 ```powershell
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
 Function        Add-KindleBook                                     1.0        PSKindleWatch
+Function        Get-KindleBooks                                    1.0        PSKindleWatch
 Function        Remove-KindleBook                                  1.0        PSKindleWatch
 Function        Update-KindleBookPrices                            1.0        PSKindleWatch
 ```
@@ -41,6 +42,26 @@ The module stores book data in a JSON file, the `-DataFile` parameter specifies 
 ```powershell
 Add-KindleBook -BookURL "https://www.amazon.com.au/dp/B07YX3B5G9/"
 ```
+
+
+### Get-KindleBooks
+
+`Get-KindleBooks [-DataFile] <String>]`
+
+Returns a list of currently monitored books.
+
+**Example**
+
+```
+PS C:\> Get-KindleBooks | Format-Table -AutoSize
+
+Title                                                                                            Authors                               OriginalPrice
+-----                                                                                            -------                               -------------
+The Age of Surveillance Capitalism: The Fight for a Human Future at the New Frontier of Power    Shoshana Zuboff                                9.80
+Superforecasting: The Art and Science of Prediction                                              Philip Tetlock,Dan Gardner                    14.99
+Naked Economics: Undressing the Dismal Science (Fully Revised and Updated)                       Charles J. Wheelan, Burton G. Malkiel         23.06
+```
+
 
 ### Remove-KindleBook
 

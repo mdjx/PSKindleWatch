@@ -51,7 +51,9 @@ function Get-AmazonData {
 
     Param (
         [Parameter(Mandatory = $true)]
-        [string]$ASIN
+        [string]$ASIN,
+        [Parameter(Mandatory = $true)]
+        [uri]$URL
     )
 
     Write-Verbose "Querying Amazon API"
@@ -62,7 +64,7 @@ function Get-AmazonData {
     }
 
     try {
-        $Result = Invoke-RestMethod -Method Post -ContentType "application/x-www-form-urlencoded" -Uri "https://www.amazon.com.au/gp/search-inside/service-data" -Body $Body -ErrorAction Stop
+        $Result = Invoke-RestMethod -Method Post -ContentType "application/x-www-form-urlencoded" -Uri "https://$($URL.Host)/gp/search-inside/service-data" -Body $Body -ErrorAction Stop
     }
     catch {
         Write-Host "API call was not successful. The exception message is below." -ForegroundColor Red
@@ -120,7 +122,7 @@ function Add-KindleBook {
     }
     else {
 
-        $Result = Get-AmazonData -ASIN $ASIN
+        $Result = Get-AmazonData -ASIN $ASIN -URL $BookURL
         
         $Data = @{
             Title         = $Result.title
@@ -181,6 +183,22 @@ function Remove-KindleBook {
 }
 
 
+function Get-KindleBooks {
+    [CmdletBinding()]
+
+    Param (
+        [Parameter(Mandatory = $false)]
+        [ValidateScript( { Test-Path -Path $_ })]
+        [string]$DataFile = [Environment]::GetFolderPath("MyDocuments") + "\KindleBooks.json"
+    )
+
+    [array]$BookData = Import-KindleDataFile -DataFile $DataFile
+    $Authors = @{Label="Authors";Expression={$_.Authors -join ", "}}
+
+    Write-Output $BookData | Select Title, $Authors, OriginalPrice
+}
+
+
 function Update-KindleBookPrices {
     [CmdletBinding()]
 
@@ -211,7 +229,7 @@ function Update-KindleBookPrices {
     
             Write-Host "Checking price of $($Book.Title)"
 
-            $CurrentResult = Get-AmazonData -ASIN $Book.ASIN
+            $CurrentResult = Get-AmazonData -ASIN $Book.ASIN -URL $Book.URL
             $CurrentPrice = [decimal]$CurrentResult.buyingPrice.Replace("$", "")
             $Message = $null
 
