@@ -46,7 +46,7 @@ Add-KindleBook -BookURL "https://www.amazon.com.au/dp/B07YX3B5G9/"
 
 ### Get-KindleBooks
 
-`Get-KindleBooks [-DataFile] <String>]`
+`Get-KindleBooks [-DataFile <String>]`
 
 Returns a list of currently monitored books.
 
@@ -79,7 +79,7 @@ Removing:
 
 ### Update-KindleBookPrices
 
-`Update-KindleBookPrices [-DataFile] <String>] [-AlertScriptBlock <ScriptBlock>]`
+`Update-KindleBookPrices [-DataFile <String>] [-AlertScriptBlock <ScriptBlock>]`
 
 Checks the current price of all books in the data file and prints any price drop to the console. 
 
