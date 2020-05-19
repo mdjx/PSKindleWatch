@@ -1,8 +1,15 @@
 # PSKindleWatch
 
+[![version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://semver.org)
+
+
 PSKindleWatch is a PowerShell module that keeps a Kindle book watchlist and can alert you when a price drop occurs. 
 
 ## Installation
+
+### Via PowerShell Gallery
+
+`Install-Module -Name PSKindleWatch -Scope CurrentUser`
 
 ### Via Git
 

@@ -5,7 +5,6 @@ properties {
 task default -depends Analyze, Test
 
 task Analyze {
-    $saResults = Invoke-ScriptAnalyzer -Path $script -Severity @('Error', 'Warning') -Recurse -Verbose:$false
     $saResults = Invoke-ScriptAnalyzer -Path $script -Severity @('Error') -Recurse -Verbose:$false
     if ($saResults) {
         $saResults | Format-Table  
