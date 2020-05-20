@@ -30,7 +30,7 @@ CompanyName = 'xkln.net'
 Copyright = '(c) 2019 md. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Tracks specified Amazon Kindle store books and alerts when when the price changes'
+Description = 'Tracks specified Amazon Kindle store books and alerts when the price drops. Docs at https://github.com/mdjx/PSKindleWatch'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # Tags
-        Tags = "Kindle", "Amazon", "Books", "eBooks", "Price"
+        Tags = "Kindle", "Amazon", "Books", "eBooks", "Price", "Sale", "Discount"
 
         # ReleaseNotes of this module
         ReleaseNotes = 'https://github.com/mdjx/PSKindleWatch'
